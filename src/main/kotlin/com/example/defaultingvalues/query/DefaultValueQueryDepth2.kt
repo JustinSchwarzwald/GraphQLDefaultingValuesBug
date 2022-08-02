@@ -4,7 +4,7 @@ import com.expediagroup.graphql.server.operations.Query
 import org.springframework.stereotype.Component
 
 @Component
-class DefaultValueQuery : Query {
+class DefaultValueQueryDepth2 : Query {
     suspend fun returnTrueIfValueDefaults(parentQueryModel: ParentQueryModel): Boolean {
         return parentQueryModel.childQueryModel?.value == "defaultValue"
     }
