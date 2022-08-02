@@ -5,9 +5,9 @@ import org.springframework.stereotype.Component
 
 @Component
 class DefaultValueQuery : Query {
-    suspend fun returnTrueIfValueDefaults(topQueryModel: TopQueryModel): Boolean {
-        return topQueryModel.bottomQueryModel?.value == "defaultValue"
+    suspend fun returnTrueIfValueDefaults(parentQueryModel: ParentQueryModel): Boolean {
+        return parentQueryModel.childQueryModel?.value == "defaultValue"
     }
 }
-data class TopQueryModel(val bottomQueryModel: BottomQueryModel? = BottomQueryModel("defaultValue"))
-data class BottomQueryModel(val value: String? = "defaultValue")
+data class ParentQueryModel(val childQueryModel: ChildQueryModel? = ChildQueryModel("defaultValue"))
+data class ChildQueryModel(val value: String? = "defaultValue")
